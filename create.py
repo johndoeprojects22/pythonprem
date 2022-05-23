@@ -13,7 +13,7 @@ roles = client.list_roles()
 Role_list = roles['Roles']
 flag = 0
 for key in Role_list:
-    if key['RoleName'] == "lambda-example1-role":
+    if key['RoleName'] == "lambda-example-role":
         flag = 1
 
 print(flag)
@@ -24,6 +24,7 @@ if flag == 1:
     os.system(command1)
 
 else:
+    os.system("wget https://raw.githubusercontent.com/johndoeprojects22/pythonprem/main/trust-policy.json")
     command2 = "aws iam create-role --role-name lambda-example-role --assume-role-policy-document file://trust-policy.json"
     os.system(command2)
     command3 = "aws iam attach-role-policy --role-name lambda-pythonprem1-role --policy-arn arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
