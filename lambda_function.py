@@ -3,8 +3,8 @@ import json
 
 def lambda_handler(event, context):
   #exec(open("INSERT").read())
-  
-  res = subprocess.check_output("INSERT", shell=True).strip()
+  command = "python3 " + "INSERT"
+  res = subprocess.check_output(command, shell=True).strip()
   news = str(res,"utf-8")
   return {
         "statusCode": 200,
