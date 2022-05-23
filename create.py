@@ -5,7 +5,7 @@ import string
 import boto3 
 
 
-client = boto3.client('iam',aws_access_key_id="",aws_secret_access_key="")
+client = boto3.client('iam')
 roles = client.list_roles()
 Role_list = roles['Roles']
 flag = 0
