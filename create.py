@@ -3,9 +3,12 @@ import os
 import random
 import string
 import boto3 
+import sys
 
+accesskey = sys.argv[1]
+secretkey = sys.argv[2]
 
-client = boto3.client('iam')
+client = boto3.client('iam',aws_access_key_id=accesskey,aws_secret_access_key=secretkey)
 roles = client.list_roles()
 Role_list = roles['Roles']
 flag = 0
