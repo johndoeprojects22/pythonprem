@@ -29,6 +29,11 @@ filedata = filedata.replace("INSERT", fname)
 with open('serverless.yaml', 'w') as file:
   file.write(filedata)
 
+  
+os.system("more serverless.yaml")
+ 
+  
+ 
 destfile = res +"/"
 
 command2 = "aws s3 cp hello.zip s3://"+destfile
