@@ -7,7 +7,9 @@ def lambda_handler(event, context):
   command = "python3 " + "hello.py"
   res = subprocess.check_output(command, shell=True).strip()
   news = str(res,"utf-8")
-  response_body = "<html><body><h1>"+news+"</h1></body></html>"
+  content = news.replace("\n","<br>")
+  print(content)
+  response_body = "<html><body><h1>"+content+"</h1></body></html>"
     
     
     
