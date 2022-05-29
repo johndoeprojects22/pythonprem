@@ -3,9 +3,9 @@ import random
 import string
 import boto3 
 import sys 
+import subprocess
+
 # initializing size of string 
-
-
 
 
 N = 8
@@ -15,17 +15,11 @@ N = 8
 res = ''.join(random.choices(string.ascii_lowercase +
                              string.digits, k = N))
 
+stacks = subprocess.check_output('aws cloudformation list-stacks', shell=True) 
+print(stacks)
 
 
-client = boto3.client('lambda')
-
-response = client.list_functions(
-    MasterRegion='us-east-1',
-    FunctionVersion='ALL',
-    MaxItems=10
-)
-
-print(response)
+#could be anything here.
 
 
 command = "aws s3api create-bucket --bucket " + res + " --region us-east-1"
@@ -54,6 +48,8 @@ destfile = res +"/"
 command2 = "aws s3 cp hello.zip s3://"+destfile
 
 os.system(command2)
+
+
 
 os.system("aws cloudformation deploy --template-file serverless.yaml --stack-name pyprem")
 
