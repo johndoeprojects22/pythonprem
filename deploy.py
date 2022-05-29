@@ -16,7 +16,9 @@ res = ''.join(random.choices(string.ascii_lowercase +
                              string.digits, k = N))
 
 stacks = subprocess.check_output('aws cloudformation list-stacks', shell=True) 
-print(stacks)
+
+content = str(stacks)
+print(contents)
 
 
 #could be anything here.
