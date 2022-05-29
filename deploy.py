@@ -66,7 +66,7 @@ else:
   with open('serverless.yaml', 'r') as file:
     filedata = file.read()
 
-  fname = res
+  fname = target
 
   # Replace the target string
   filedata = filedata.replace("INSERT", fname)
@@ -80,7 +80,7 @@ else:
 
 
 
-  destfile = res +"/"
+  destfile = target +"/"
 
   command2 = "aws s3 cp hello.zip s3://"+destfile
 
