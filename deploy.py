@@ -20,7 +20,7 @@ stacks = subprocess.check_output('aws cloudformation list-stacks', shell=True)
 content = str(stacks)
 
 if 'pyprem' in content:
-  print(contents)
+  print(content)
 
 else:
 #could be anything here.
