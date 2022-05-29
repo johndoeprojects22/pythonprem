@@ -21,7 +21,36 @@ content = str(stacks)
 
 if 'pyprem' in content:
   print(content)
+  
+  with open('serverless.yaml', 'r') as file:
+    filedata = file.read()
 
+  fname = res
+
+  # Replace the target string
+  filedata = filedata.replace("INSERT", fname)
+
+  # Write the file out again
+  with open('serverless.yaml', 'w') as file:
+    file.write(filedata)
+
+
+ # os.system("more serverless.yaml")
+
+
+
+  destfile = res +"/"
+
+  command2 = "aws s3 cp hello.zip s3://"+destfile
+
+  os.system(command2)
+  
+  os.system("aws cloudformation update --template-file serverless.yaml --stack-name pyprem")
+
+  
+ 
+  
+  
 else:
 #could be anything here.
   command = "aws s3api create-bucket --bucket " + res + " --region us-east-1"
@@ -41,7 +70,7 @@ else:
     file.write(filedata)
 
 
-  os.system("more serverless.yaml")
+ # os.system("more serverless.yaml")
 
 
 
