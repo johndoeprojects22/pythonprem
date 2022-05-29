@@ -15,7 +15,7 @@ N = 8
 res = ''.join(random.choices(string.ascii_lowercase +
                              string.digits, k = N))
 
-stacks = subprocess.check_output('aws cloudformation list-stacks-sets --stacks "ACTIVE"', shell=True) 
+stacks = subprocess.check_output('aws cloudformation list-stacks-set --stacks "ACTIVE"', shell=True) 
 
 content = str(stacks)
 
