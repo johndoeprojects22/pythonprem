@@ -24,7 +24,7 @@ if 'pyprem' in content:
   with open('serverless.yaml', 'r') as file:
     filedata = file.read()
 
-  fname = res
+  fname = target
 
   # Replace the target string
   filedata = filedata.replace("INSERT", fname)
