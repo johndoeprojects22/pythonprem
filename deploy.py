@@ -8,14 +8,10 @@ import subprocess
 # initializing size of string 
 
 
-N = 4
   
 # using random.choices()
 # generating random strings 
-res = ''.join(random.choices(string.ascii_lowercase +
-                             string.digits, k = N))
 
-target = "pyprem" + res
 
 
 stacks = subprocess.check_output('aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE', shell=True) 
@@ -55,6 +51,13 @@ if 'pyprem' in content:
   
   
 else:
+  
+  N = 4
+
+  res = ''.join(random.choices(string.ascii_lowercase +
+                             string.digits, k = N))
+
+  target = "pyprem" + res
 #could be anything here.
   command = "aws s3api create-bucket --bucket " + target + " --region us-east-1"
   os.system(command)
