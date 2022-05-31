@@ -24,7 +24,16 @@ if 'pyprem' in content:
   with open('serverless.yaml', 'r') as file:
     filedata = file.read()
 
-  fname = target
+  s3 = boto3.resource('s3')
+  buckets = s3.buckets.all()
+  print(type(buckets))
+  for bucket in buckets:
+     if 'pyprem' in bucket.name:
+        fname = str(bucket.name)
+      
+  
+  
+  #fname = target
 
   # Replace the target string
   filedata = filedata.replace("INSERT", fname)
