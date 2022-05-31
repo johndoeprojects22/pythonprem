@@ -47,7 +47,7 @@ if 'pyprem' in content:
 
 
 
-  destfile = res +"/"
+  destfile = fname +"/"
 
   command2 = "aws s3 cp hello.zip s3://"+destfile
 
