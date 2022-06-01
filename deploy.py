@@ -30,8 +30,17 @@ if 'pyprem' in content:
   for bucket in buckets:
      if 'pyprem' in bucket.name:
         fname = str(bucket.name)
-      
+ 
+  N = 3
+
+  version = ''.join(random.choices(string.ascii_lowercase +
+                             string.digits, k = N))
   
+  package = "hello"+version+".zip"
+  
+  os.system("aws s3 delete-object --bucket "+fname+" --key hello.zip")
+  os.system("aws s3 cp "+package+" s3://"+fname+"/")
+
   
   #fname = target
 
@@ -42,18 +51,25 @@ if 'pyprem' in content:
   with open('serverless.yaml', 'w') as file:
     file.write(filedata)
 
+  
+  filedata = filedata.replace("hello.zip", target)
+  with open('serverless.yaml', 'w') as file:
+    file.write(filedata)
 
  # os.system("more serverless.yaml")
 
 
-
-  destfile = fname +"/"
-
-  command2 = "aws s3 cp hello.zip s3://"+destfile
-
-  os.system(command2)
   
-  print("flag 2")
+  
+  
+  
+  #destfile = fname +"/"
+
+  #command2 = "aws s3 cp hello.zip s3://"+destfile
+
+  #os.system(command2)
+  
+  #print("flag 2")
   
   os.system("aws cloudformation update-stack --stack-name pyprem --template-body file://serverless.yaml")
 
