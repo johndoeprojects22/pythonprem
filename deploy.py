@@ -53,6 +53,8 @@ if 'pyprem' in content:
 
   os.system(command2)
   
+  print("flag 2")
+  
   os.system("aws cloudformation update-stack --template-file serverless.yaml --stack-name pyprem")
 
   
