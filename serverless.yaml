@@ -50,3 +50,12 @@ Resources:
       FunctionName: !GetAtt "FunctionStack.Arn"
       Principal: "apigateway.amazonaws.com"
       SourceArn: !Sub "arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:${PremAPI}/*/GET/"
+  
+  
+  DevApi:
+    Type: 'AWS::ApiGateway::RestApi'
+    EndpointConfiguration:
+        Types:
+          - "Private"
+  
+    
