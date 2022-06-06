@@ -115,31 +115,31 @@ Resources:
                 Principal: '*'
                 Resource: '*'
         
-  PrivateAPIMethod:
-    Type: "AWS::ApiGateway::Method"
-    Properties:
-      AuthorizationType: "NONE"
-      HttpMethod: "GET"
-      Integration:
-        IntegrationHttpMethod: "POST"
-        Type: "AWS_PROXY"
-        Uri: !Sub 
-          - "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${lambdaArn}/invocations"
-          - lambdaArn: !GetAtt "FunctionStack.Arn"
-      ResourceId: !GetAtt "PrivateAPI.RootResourceId"
-      RestApiId: !Ref "PrivateAPI"
+    PrivateAPIMethod:
+      Type: "AWS::ApiGateway::Method"
+      Properties:
+        AuthorizationType: "NONE"
+        HttpMethod: "GET"
+        Integration:
+          IntegrationHttpMethod: "POST"
+          Type: "AWS_PROXY"
+          Uri: !Sub 
+            - "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${lambdaArn}/invocations"
+            - lambdaArn: !GetAtt "FunctionStack.Arn"
+        ResourceId: !GetAtt "PrivateAPI.RootResourceId"
+        RestApiId: !Ref "PrivateAPI"
 
-  PrivateApiDeployment:
-    Type: "AWS::ApiGateway::Deployment"
-    DependsOn: "PrivateAPIMethod"
-    Properties:
-      RestApiId: !Ref "PrivateAPI"
-      StageName: Prod
+    PrivateApiDeployment:
+      Type: "AWS::ApiGateway::Deployment"
+      DependsOn: "PrivateAPIMethod"
+      Properties:
+        RestApiId: !Ref "PrivateAPI"
+        StageName: Prod
 
-  PrivateAPIInvoke:
-    Type: "AWS::Lambda::Permission"
-    Properties:
-      Action: "lambda:InvokeFunction"
-      FunctionName: !GetAtt "FunctionStack.Arn"
-      Principal: "apigateway.amazonaws.com"
-      SourceArn: !Sub "arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:${PrivateAPI}/*/GET/"
+    PrivateAPIInvoke:
+      Type: "AWS::Lambda::Permission"
+      Properties:
+        Action: "lambda:InvokeFunction"
+        FunctionName: !GetAtt "FunctionStack.Arn"
+        Principal: "apigateway.amazonaws.com"
+        SourceArn: !Sub "arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:${PrivateAPI}/*/GET/"
