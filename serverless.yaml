@@ -101,7 +101,7 @@ Resources:
     Properties:
       EndpointConfiguration:
         Types: [PRIVATE]
-        VpcEndpointIds: [!GetAtt APIEndpoint.VpcId]
+        VpcEndpointIds: [!GetAtt "APIEndpoint.VpcId"]
      
       Name: PrvAPI
 
