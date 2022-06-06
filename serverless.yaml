@@ -15,7 +15,27 @@ Resources:
       Description: Invoke a function during stack creation.
       TracingConfig:
         Mode: Active
-
+  
+  APISecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Allow http to client host
+      VpcId: vpc-e72d519d
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 0.0.0.0/0
+        - IpProtocol: tcp
+          FromPort: 443
+          ToPort: 443
+          CidrIp: 0.0.0.0/0
+      SecurityGroupEgress:
+        - IpProtocol: "-1"
+          CidrIp: 0.0.0.0/0
+  
+ 
+  
   PremAPI:
     Type: "AWS::ApiGateway::RestApi"
     Properties:
@@ -97,4 +117,5 @@ Resources:
       FunctionName: rmrpy
       Principal: "apigateway.amazonaws.com"
       SourceArn: !Sub "arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:${PrivateAPI}/*/GET/"
+      
     
