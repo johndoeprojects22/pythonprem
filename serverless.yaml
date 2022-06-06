@@ -101,7 +101,7 @@ Resources:
     Properties:
       EndpointConfiguration:
         Types: [PRIVATE]
-        VpcEndpointIds: [vpce-08609fd845b7f9dfc]
+        VpcEndpointIds: [!GetAtt APIEndpoint.VpcId]
      
       Name: PrvAPI
 
@@ -123,7 +123,7 @@ Resources:
         Type: "AWS_PROXY"
         Uri: !Sub 
           - "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${lambdaArn}/invocations"
-          - lambdaArn: !GetAtt "FunctionStack.Arn"y
+          - lambdaArn: !GetAtt "FunctionStack.Arn"
       ResourceId: !GetAtt "PrivateAPI.RootResourceId"
       RestApiId: !Ref "PrivateAPI"
 
