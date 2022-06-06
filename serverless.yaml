@@ -100,7 +100,7 @@ Resources:
     Properties:
       EndpointConfiguration:
         Types: [PRIVATE]
-        VpcEndpointIds: [INSERT]
+        VpcEndpointIds: [INSERT2]
      
       Name: PrvAPI
 
