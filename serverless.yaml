@@ -95,22 +95,25 @@ Resources:
           - subnet-98dfd196
         VpcEndpointType: Interface
         VpcId: vpc-4f3f5f32
+    
+    
+    
     PrivateAPI:
-    Type: "AWS::ApiGateway::RestApi"
-    Properties:
-      EndpointConfiguration:
-        Types: [PRIVATE]
-        VpcEndpointIds: [INSERT2]
-     
-      Name: PrvAPI
+      Type: "AWS::ApiGateway::RestApi"
+      Properties:
+        EndpointConfiguration:
+          Types: [PRIVATE]
+          VpcEndpointIds: [INSERT]
 
-      Policy: 
-          Version: "2012-10-17"
-          Statement:
-            - Effect: Allow
-              Action: 'execute-api:Invoke'
-              Principal: '*'
-              Resource: '*'
+        Name: PrvAPI
+
+        Policy: 
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action: 'execute-api:Invoke'
+                Principal: '*'
+                Resource: '*'
         
   PrivateAPIMethod:
     Type: "AWS::ApiGateway::Method"
