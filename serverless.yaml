@@ -34,7 +34,31 @@ Resources:
         - IpProtocol: "-1"
           CidrIp: 0.0.0.0/0
   
- 
+  APIEndpoint:
+    Type: AWS::EC2::VPCEndpoint
+    Properties: 
+      PolicyDocument: 
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action: '*'
+                Principal: '*'
+                Resource: '*'
+      PrivateDnsEnabled: false
+      SecurityGroupIds: 
+        - !GetAtt APISecurityGroup.GroupId
+      ServiceName: !Sub 'com.amazonaws.${AWS::Region}.execute-api'
+      SubnetIds: 
+        - subnet-2b46664c
+        - subnet-6fe8c741
+        - subnet-87cd3dca
+        - subnet-95fdd0c9
+        - subnet-c93329c6
+        - subnet-d496e2ea
+      VpcEndpointType: Interface
+      VpcId: vpc-e72d519d
+
+  
   
   PremAPI:
     Type: "AWS::ApiGateway::RestApi"
