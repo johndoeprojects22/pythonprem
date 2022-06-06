@@ -49,12 +49,12 @@ Resources:
         - !GetAtt APISecurityGroup.GroupId
       ServiceName: !Sub 'com.amazonaws.${AWS::Region}.execute-api'
       SubnetIds: 
-        - subnet-2b46664c
-        - subnet-6fe8c741
-        - subnet-87cd3dca
-        - subnet-95fdd0c9
-        - subnet-c93329c6
-        - subnet-d496e2ea
+        - subnet-0a1d4f2b
+        - subnet-8011f5cc
+        - subnet-2585d47a
+        - subnet-cc039bfd
+        - subnet-b791c5d1
+        - subnet-98dfd196
       VpcEndpointType: Interface
       VpcId: vpc-4f3f5f32
 
@@ -123,7 +123,7 @@ Resources:
         Type: "AWS_PROXY"
         Uri: !Sub 
           - "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${lambdaArn}/invocations"
-          - lambdaArn: arn:aws:lambda:us-east-1:694283251143:function:rmrpy
+          - lambdaArn: !GetAtt "FunctionStack.Arn"y
       ResourceId: !GetAtt "PrivateAPI.RootResourceId"
       RestApiId: !Ref "PrivateAPI"
 
@@ -138,7 +138,7 @@ Resources:
     Type: "AWS::Lambda::Permission"
     Properties:
       Action: "lambda:InvokeFunction"
-      FunctionName: rmrpy
+      FunctionName: !GetAtt "FunctionStack.Arn"
       Principal: "apigateway.amazonaws.com"
       SourceArn: !Sub "arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:${PrivateAPI}/*/GET/"
       
