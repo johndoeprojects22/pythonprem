@@ -16,47 +16,7 @@ Resources:
       TracingConfig:
         Mode: Active
   
-  APISecurityGroup:
-    Type: AWS::EC2::SecurityGroup
-    Properties:
-      GroupDescription: Allow http to client host
-      VpcId: vpc-4f3f5f32
-      SecurityGroupIngress:
-        - IpProtocol: tcp
-          FromPort: 80
-          ToPort: 80
-          CidrIp: 0.0.0.0/0
-        - IpProtocol: tcp
-          FromPort: 443
-          ToPort: 443
-          CidrIp: 0.0.0.0/0
-      SecurityGroupEgress:
-        - IpProtocol: "-1"
-          CidrIp: 0.0.0.0/0
   
-  APIEndpoint:
-    Type: AWS::EC2::VPCEndpoint
-    Properties: 
-      PolicyDocument: 
-            Version: "2012-10-17"
-            Statement:
-              - Effect: Allow
-                Action: '*'
-                Principal: '*'
-                Resource: '*'
-      PrivateDnsEnabled: false
-      SecurityGroupIds: 
-        - !GetAtt APISecurityGroup.GroupId
-      ServiceName: !Sub 'com.amazonaws.${AWS::Region}.execute-api'
-      SubnetIds: 
-        - subnet-0a1d4f2b
-        - subnet-8011f5cc
-        - subnet-2585d47a
-        - subnet-cc039bfd
-        - subnet-b791c5d1
-        - subnet-98dfd196
-      VpcEndpointType: Interface
-      VpcId: vpc-4f3f5f32
 
   
   
