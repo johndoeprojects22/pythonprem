@@ -18,8 +18,6 @@ Resources:
   
   
 
-  
-  
   PremAPI:
     Type: "AWS::ApiGateway::RestApi"
     Properties:
@@ -55,6 +53,90 @@ Resources:
       Principal: "apigateway.amazonaws.com"
       SourceArn: !Sub "arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:${PremAPI}/*/GET/"
   
-  
-      
-    
+  APISecurityGroup:
+      Type: AWS::EC2::SecurityGroup
+      Properties:
+        GroupDescription: Allow http to client host
+        VpcId: vpc-4f3f5f32
+        SecurityGroupIngress:
+          - IpProtocol: tcp
+            FromPort: 80
+            ToPort: 80
+            CidrIp: 0.0.0.0/0
+          - IpProtocol: tcp
+            FromPort: 443
+            ToPort: 443
+            CidrIp: 0.0.0.0/0
+        SecurityGroupEgress:
+          - IpProtocol: "-1"
+            CidrIp: 0.0.0.0/0
+
+
+    APIEndpoint:
+      Type: AWS::EC2::VPCEndpoint
+      Properties: 
+        PolicyDocument: 
+              Version: "2012-10-17"
+              Statement:
+                - Effect: Allow
+                  Action: '*'
+                  Principal: '*'
+                  Resource: '*'
+        PrivateDnsEnabled: false
+        SecurityGroupIds: 
+          - !GetAtt APISecurityGroup.GroupId
+        ServiceName: !Sub 'com.amazonaws.${AWS::Region}.execute-api'
+        SubnetIds: 
+          - subnet-0a1d4f2b
+          - subnet-8011f5cc
+          - subnet-2585d47a
+          - subnet-cc039bfd
+          - subnet-b791c5d1
+          - subnet-98dfd196
+        VpcEndpointType: Interface
+        VpcId: vpc-4f3f5f32
+    PrivateAPI:
+    Type: "AWS::ApiGateway::RestApi"
+    Properties:
+      EndpointConfiguration:
+        Types: [PRIVATE]
+        VpcEndpointIds: [INSERT]
+     
+      Name: PrvAPI
+
+      Policy: 
+          Version: "2012-10-17"
+          Statement:
+            - Effect: Allow
+              Action: 'execute-api:Invoke'
+              Principal: '*'
+              Resource: '*'
+        
+  PrivateAPIMethod:
+    Type: "AWS::ApiGateway::Method"
+    Properties:
+      AuthorizationType: "NONE"
+      HttpMethod: "GET"
+      Integration:
+        IntegrationHttpMethod: "POST"
+        Type: "AWS_PROXY"
+        Uri: !Sub 
+          - "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${lambdaArn}/invocations"
+          - lambdaArn: !GetAtt "FunctionStack.Arn"
+      ResourceId: !GetAtt "PrivateAPI.RootResourceId"
+      RestApiId: !Ref "PrivateAPI"
+
+  PrivateApiDeployment:
+    Type: "AWS::ApiGateway::Deployment"
+    DependsOn: "PrivateAPIMethod"
+    Properties:
+      RestApiId: !Ref "PrivateAPI"
+      StageName: Prod
+
+  PrivateAPIInvoke:
+    Type: "AWS::Lambda::Permission"
+    Properties:
+      Action: "lambda:InvokeFunction"
+      FunctionName: !GetAtt "FunctionStack.Arn"
+      Principal: "apigateway.amazonaws.com"
+      SourceArn: !Sub "arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:${PrivateAPI}/*/GET/"
