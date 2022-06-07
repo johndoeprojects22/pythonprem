@@ -94,8 +94,8 @@ else:
     filedata = file.read()
 
   fname = target
-  print("===================")
-  print(fname)
+ # print("===================")
+  #print(fname)
   # Replace the target string
   filedata = filedata.replace("INSERT", fname)
 
