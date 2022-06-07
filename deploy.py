@@ -67,8 +67,8 @@ if 'pyprem' in content:
 
 
   
-  
-  
+  res = "serverless"+version+".yaml"
+  os.rename('serverless.yaml',res)
   
   #destfile = fname +"/"
 
@@ -78,7 +78,7 @@ if 'pyprem' in content:
   
   print("flag 2")
   
-  os.system("aws cloudformation update-stack --stack-name pyprem --template-body file://serverless.yaml")
+  os.system("aws cloudformation update-stack --stack-name pyprem --template-body file://"+res)
 
   
  
