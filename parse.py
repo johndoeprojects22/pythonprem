@@ -43,3 +43,6 @@ print(content)
 filedata = filedata.replace("HERE",content)
 with open('serverless.yaml','w') as file:
   file.write(filedata)
+
+  
+os.system("more serverless.yaml")
