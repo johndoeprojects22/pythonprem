@@ -57,13 +57,13 @@ if 'pyprem' in content:
     file.write(filedata)
 
   
-  with open('serverless.yaml', 'r') as file:
+  with open('serverless.yaml', 'r') as file1:
     filedata2 = file.read()
  
   
   
   filedata2 = filedata2.replace("hello.zip", package)
-  with open('serverless.yaml', 'w') as file:
+  with open('serverless.yaml', 'w') as file1:
     file.write(filedata2)
 
   os.system("more serverless.yaml")
