@@ -40,9 +40,14 @@ content = response['StackResourceDetail']['PhysicalResourceId']
 print(content)
 
 
-filedata = filedata.replace("HERE",content)
+# Read in the file
+with open('serverless.yaml', 'r') as file1:
+  filedata1 = file1.read()
+
+
+filedata1 = filedata1.replace("HERE",content)
 with open('serverless.yaml','w') as file:
-  file.write(filedata)
+  file.write(filedata1)
 
   
 #os.system("more serverless.yaml")
