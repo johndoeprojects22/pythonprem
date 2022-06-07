@@ -2,6 +2,7 @@ import sys
 import boto3
 import os
 import time
+import subprocess
 
 
 stacks = subprocess.check_output('aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE', shell=True) 
