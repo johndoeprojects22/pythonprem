@@ -38,7 +38,7 @@ if 'pyprem' in content:
   fname="pyprem2022"
   
   os.system("aws s3 rm "+"s3://pyprem2022/"+"hello.zip")
-  os.system("zip "+package+"lambda_function.py hello.py")
+  os.system("zip "+package+" lambda_function.py hello.py")
   os.system("aws s3 cp "+package+" s3://"+fname+"/")
 
   os.system("aws s3 list-objects --bucket pyprem2022")
