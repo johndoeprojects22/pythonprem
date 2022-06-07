@@ -105,7 +105,7 @@ else:
 
  # os.system("more serverless.yaml")
 
-
+  os.system("ls")
 
   destfile = target +"/"
 
