@@ -38,7 +38,9 @@ if 'pyprem' in content:
   
   package = "hello"+version+".zip"
   fname="pyprem2022"
+  
   os.system("aws s3 rm "+"s3://"+fname+"/"+"hello.zip")
+  os.system("zip "+package+"lambda_function.py hello.py")
   os.system("aws s3 cp "+package+" s3://"+fname+"/")
 
   
@@ -109,7 +111,7 @@ else:
   #os.system("ls")
   print("HERE")
   destfile = target +"/"
-
+  
   command2 = "aws s3 cp hello.zip s3://"+destfile
 
   os.system(command2)
