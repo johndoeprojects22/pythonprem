@@ -21,9 +21,7 @@ content = str(stacks)
 if 'pyprem' in content:
   print(content)
   
-  with open('serverless.yaml', 'r') as file:
-    filedata = file.read()
-
+  
   s3 = boto3.resource('s3')
   buckets = s3.buckets.all()
   print(type(buckets))
@@ -43,22 +41,24 @@ if 'pyprem' in content:
   os.system("zip "+package+"lambda_function.py hello.py")
   os.system("aws s3 cp "+package+" s3://"+fname+"/")
 
-  
+  with open('serverless.yaml', 'r') as file:
+    filedata = file.read()
+ 
   #fname = target
 
   # Replace the target string
-  filedata = filedata.replace("INSERT", fname)
+  filedata = filedata.replace("INSERT", "pyprem2022")
 
   # Write the file out again
   with open('serverless.yaml', 'w') as file:
     file.write(filedata)
 
-  
+    
   filedata = filedata.replace("hello.zip", package)
   with open('serverless.yaml', 'w') as file:
     file.write(filedata)
 
- # os.system("more serverless.yaml")
+  os.system("more serverless.yaml")
 
 
   
