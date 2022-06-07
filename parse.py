@@ -35,10 +35,11 @@ response = client.describe_stack_resource(
     StackName="vpcendpoint",
     LogicalResourceId="APIEndpoint" #Logical ID in you template
 )
-  
-print(response['StackResourceDetail']['PhysicalResourceId'])
+
+content = response['StackResourceDetail']['PhysicalResourceId']
+print(content)
 
 
-#filedata = filedata.replace("INSERT2",)
-#with open('serverless.yaml','w') as file:
-#  file.write(filedata)
+filedata = filedata.replace("HERE",content)
+with open('serverless.yaml','w') as file:
+  file.write(filedata)
