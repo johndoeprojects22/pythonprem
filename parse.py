@@ -9,6 +9,8 @@ stacks = subprocess.check_output('aws cloudformation list-stacks --stack-status-
 
 content = str(stacks)
 
+print(content)
+
 if 'vpcendpoint' not in content:
   os.system("aws cloudformation deploy --template-file endpoint.yaml --stack-name vpcendpoint")
 
