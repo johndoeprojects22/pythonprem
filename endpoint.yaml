@@ -5,6 +5,7 @@ Resources:
   APISecurityGroup:
       Type: AWS::EC2::SecurityGroup
       Properties:
+        GroupName: PrvAPISG
         GroupDescription: Allow http to client host
         VpcId: vpc-4f3f5f32
         SecurityGroupIngress:
