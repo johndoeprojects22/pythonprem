@@ -29,7 +29,7 @@ with open('lambda_function.py', 'w') as file:
   file.write(filedata)
 
   
-client = boto3.client('ec2',region_name='us-east-1')
+client = boto3.client('cloudformation')
 
 response = client.describe_stack_resource(
     StackName="vpcendpoint",
