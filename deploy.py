@@ -39,7 +39,7 @@ if 'pyprem' in content:
   package = "hello"+version+".zip"
   
   os.system("aws s3 rm "+"s3://"+fname+"/"+"hello.zip")
-  os.system("aws s3 cp "+package+" s3://"+fname+"/")
+  os.system("aws s3 cp hello.zip"+" s3://"+fname+"/")
 
   
   #fname = target
