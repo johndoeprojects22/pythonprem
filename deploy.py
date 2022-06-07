@@ -39,7 +39,7 @@ if 'pyprem' in content:
   package = "hello"+version+".zip"
   fname="pyprem2022"
   os.system("aws s3 rm "+"s3://"+fname+"/"+"hello.zip")
-  os.system("aws s3 cp hello.zip"+" s3://"+fname+"/")
+  os.system("aws s3 cp "+package+" s3://"+fname+"/")
 
   
   #fname = target
@@ -52,7 +52,7 @@ if 'pyprem' in content:
     file.write(filedata)
 
   
-  filedata = filedata.replace("hello.zip", "hello.zip")
+  filedata = filedata.replace("hello.zip", package)
   with open('serverless.yaml', 'w') as file:
     file.write(filedata)
 
