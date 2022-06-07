@@ -13,8 +13,6 @@ if 'vpcendpoint' not in content:
   os.system("aws cloudformation deploy --template-file endpoint.yaml --stack-name vpcendpoint")
 
 
-time.sleep(15)  
-
 # Read in the file
 with open('lambda_function.py', 'r') as file:
   filedata = file.read()
