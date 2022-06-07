@@ -61,7 +61,7 @@ Resources:
     Properties:
       EndpointConfiguration:
         Types: [PRIVATE]
-        VpcEndpointIds: [INSERT]
+        VpcEndpointIds: [HERE]
       Name: PrvAPI
       Policy: 
           Version: "2012-10-17"
