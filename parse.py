@@ -45,4 +45,4 @@ with open('serverless.yaml','w') as file:
   file.write(filedata)
 
   
-os.system("more serverless.yaml")
+#os.system("more serverless.yaml")
