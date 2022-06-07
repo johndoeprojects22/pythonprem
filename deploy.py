@@ -69,7 +69,7 @@ if 'pyprem' in content:
 
   #os.system(command2)
   
-  #print("flag 2")
+  print("flag 2")
   
   os.system("aws cloudformation update-stack --stack-name pyprem --template-body file://serverless.yaml")
 
@@ -105,8 +105,8 @@ else:
 
  # os.system("more serverless.yaml")
 
-  os.system("ls")
-
+  #os.system("ls")
+  print("HERE")
   destfile = target +"/"
 
   command2 = "aws s3 cp hello.zip s3://"+destfile
