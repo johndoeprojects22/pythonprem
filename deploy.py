@@ -37,7 +37,7 @@ if 'pyprem' in content:
                              string.digits, k = N))
   
   package = "hello"+version+".zip"
-  
+  fname="pyprem2022"
   os.system("aws s3 rm "+"s3://"+fname+"/"+"hello.zip")
   os.system("aws s3 cp hello.zip"+" s3://"+fname+"/")
 
@@ -84,7 +84,7 @@ else:
   res = ''.join(random.choices(string.ascii_lowercase +
                              string.digits, k = N))
 
-  target = "pyprem" + res
+  target = "pyprem2022"
 #could be anything here.
   command = "aws s3api create-bucket --bucket " + target + " --region us-east-1"
   os.system(command)
