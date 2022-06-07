@@ -36,7 +36,7 @@ response = client.describe_stack_resource(
     LogicalResourceId="APIEndpoint" #Logical ID in you template
 )
   
-print(response)
+print(response['StackResourceDetail']['PhysicalResourceId'])
 
 
 #filedata = filedata.replace("INSERT2",)
