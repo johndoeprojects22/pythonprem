@@ -41,7 +41,7 @@ if 'pyprem' in content:
   os.system("zip "+package+" lambda_function.py hello.py")
   os.system("aws s3 cp "+package+" s3://"+fname+"/")
 
-  os.system("aws s3 list-objects --bucket pyprem2022")
+  #os.system("aws s3 list-objects --bucket pyprem2022")
   
   
   with open('serverless.yaml', 'r') as file:
