@@ -50,21 +50,15 @@ if 'pyprem' in content:
   #fname = target
 
   # Replace the target string
-  filedata = filedata.replace("INSERT", "pyprem2022")
 
   # Write the file out again
   with open('serverless.yaml', 'w') as file:
+    filedata = filedata.replace("INSERT", "pyprem2022")
+    filedata2 = filedata.replace("hello.zip", package)
     file.write(filedata)
 
   
-  with open('serverless.yaml', 'r') as file1:
-    filedata2 = file.read()
- 
   
-  
-  filedata2 = filedata2.replace("hello.zip", package)
-  with open('serverless.yaml', 'w') as file1:
-    file.write(filedata2)
 
   os.system("more serverless.yaml")
 
