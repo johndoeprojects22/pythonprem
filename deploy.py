@@ -60,7 +60,7 @@ if 'pyprem' in content:
     file.close()
   
 
-   with open('serverless.yaml', 'r') as file1:
+  with open('serverless.yaml', 'r') as file1:
     filedata2 = file1.read()
   
   with open('serverless.yaml', 'w') as file1:
