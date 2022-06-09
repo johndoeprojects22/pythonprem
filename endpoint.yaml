@@ -1,7 +1,6 @@
 AWSTemplateFormatVersion: '2010-09-09'
-Description: Lambda function with cfn-response.
+Description: VPC Stack.
 Resources:
-  
   APISecurityGroup:
     Type: AWS::EC2::SecurityGroup
     Properties:
@@ -20,7 +19,6 @@ Resources:
       SecurityGroupEgress:
         - IpProtocol: "-1"
           CidrIp: 0.0.0.0/0
-  
   APIEndpoint:
     Type: AWS::EC2::VPCEndpoint
     Properties: 
@@ -44,3 +42,12 @@ Resources:
         - subnet-98dfd196
       VpcEndpointType: Interface
       VpcId: vpc-4f3f5f32
+Outputs:
+  APIEndpoint:
+    Description: The VPC ID to use for public web servers
+    Value:
+      Ref: APIEndpoint
+    Export:
+      Name:
+        'Fn::Sub': '${AWS::StackName}-VPCID'
+ 
