@@ -81,7 +81,11 @@ if result == True:
     fileContent=file_content,
     filePath='serverless.yaml'
   )
- 
+else:
+  command = "aws s3api create-bucket --bucket pyprem2022 --region us-east-1"
+  os.system(command)
+  command2 = "aws s3 cp hello.zip s3://pyprem2022"
+  os.system(command2)
 """
  parent_folder = os.path.join("tempfolder", "pythonpremrepo")
   putFilesList = []
@@ -114,11 +118,7 @@ if result == True:
   #os.system('git commit -m "update stack" ')
   #os.system("git push -u origin main")
   
-else:
-    command = "aws s3api create-bucket --bucket pyprem2022 --region us-east-1"
-    os.system(command)
-    command2 = "aws s3 cp hello.zip s3://pyprem2022"
-    os.system(command2)
+
   # Read in the file
   
 #os.system("more serverless.yaml")
