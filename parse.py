@@ -28,7 +28,13 @@ filedata = filedata.replace("INSERT", fname)
 with open('lambda_function.py', 'w') as file:
   file.write(filedata)
 
-  
+stacks = subprocess.check_output('aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE', shell=True) 
+if 'pyprem' in content:
+  package = "hello"+version+".zip"
+  fname="pyprem2022"
+  os.system("aws s3 rm "+"s3://pyprem2022/"+"hello.zip")
+  os.system("zip "+package+" lambda_function.py hello.py")
+  os.system("aws s3 cp "+package+" s3://"+fname+"/"
 #client = boto3.client('cloudformation')
 
 #response = client.describe_stack_resource(
@@ -41,13 +47,13 @@ with open('lambda_function.py', 'w') as file:
 
 
 # Read in the file
-with open('serverless.yaml', 'r') as file1:
-  filedata1 = file1.read()
+  with open('serverless.yaml', 'r') as file1:
+    filedata1 = file1.read()
 
 
-filedata1 = filedata1.replace("HERE",content)
-with open('serverless.yaml','w') as file:
-  file.write(filedata1)
+  filedata1 = filedata1.replace("hello.zip",package)
+  with open('serverless.yaml','w') as file:
+    file.write(filedata1)
 
   
 #os.system("more serverless.yaml")
