@@ -9,8 +9,7 @@ import string
 stacks = subprocess.check_output('aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE', shell=True) 
 
 content = str(stacks)
-
-print(content)
+#print(content)
 
 if 'vpcendpoint' not in content:
   os.system("aws cloudformation deploy --template-file endpoint.yaml --stack-name vpcendpoint")
@@ -31,8 +30,12 @@ with open('lambda_function.py', 'w') as file:
 
 stacks = subprocess.check_output('aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE', shell=True) 
 
+s3 = boto3.resource('s3')
+result = s3.Bucket('pyprem2022') in s3.buckets.all()
 
-if 'pyprem' in content:
+
+
+if result == True:
   print("flag HERE HERE")
   N = 3
 
