@@ -70,6 +70,8 @@ if result == True:
     file1.write(filedata1)
   os.system("more serverless.yaml")
   client = boto3.client('codecommit')
+  lst=[]
+  lst.append("serverless.yaml")
   response = client.create_commit(repositoryName="pythonpremrepo", branchName="main", putFiles="serverless.yaml")
   #os.system("git clone codecommit://pythonpremrepo pythonprem")
   #os.system("cd pythonprem")
