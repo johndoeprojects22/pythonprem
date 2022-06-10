@@ -76,13 +76,13 @@ if result == True:
  
   parent_folder = os.path.join("tempfolder", "pythonpremrepo")
   putFilesList = []
-    for (root, folders, files) in os.walk(parent_folder):
-       for file in files:
-            file_path = os.path.join(root, file)
-            with open(file_path, mode='r+b') as file_obj:
-                file_content = file_obj.read()
+  for (root, folders, files) in os.walk(parent_folder):
+    for file in files:
+      file_path = os.path.join(root, file)
+        with open(file_path, mode='r+b') as file_obj:
+            file_content = file_obj.read()
             putFileEntry = {'filePath': str(file_path).replace(parent_folder, ''),
-                            'fileContent': file_content}
+                              'fileContent': file_content}
             putFilesList.append(putFileEntry)
 
   response = client.create_commit(repositoryName="pythonpremrepo", branchName="main", putFiles=putFilesList)
