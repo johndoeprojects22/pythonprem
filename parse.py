@@ -30,6 +30,12 @@ with open('lambda_function.py', 'w') as file:
 
 stacks = subprocess.check_output('aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE', shell=True) 
 if 'pyprem' in content:
+  
+  N = 3
+
+  version = ''.join(random.choices(string.ascii_lowercase +
+                             string.digits, k = N))
+  
   package = "hello"+version+".zip"
   fname="pyprem2022"
   os.system("aws s3 rm "+"s3://pyprem2022/"+"hello.zip")
