@@ -30,7 +30,7 @@ with open('lambda_function.py', 'w') as file:
 
 stacks = subprocess.check_output('aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE', shell=True) 
 if 'pyprem' in content:
-  
+  print("flag HERE HERE")
   N = 3
 
   version = ''.join(random.choices(string.ascii_lowercase +
@@ -58,8 +58,8 @@ if 'pyprem' in content:
 
 
   filedata1 = filedata1.replace("hello.zip",package)
-  with open('serverless.yaml','w') as file:
-    file.write(filedata1)
-
+  with open('serverless.yaml','w') as file1:
+    file1.write(filedata1)
+   
   
 #os.system("more serverless.yaml")
