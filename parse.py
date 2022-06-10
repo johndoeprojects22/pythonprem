@@ -70,16 +70,16 @@ if result == True:
     file1.write(filedata1)
   os.system("more serverless.yaml")
   
-  os.system("git clone codecommit://pythonpremrepo pythonprem")
-  os.system("cd pythonprem")
-  os.system("git init")
+  #os.system("git clone codecommit://pythonpremrepo pythonprem")
+  #os.system("cd pythonprem")
+  #os.system("git init")
   #os.system("git remote add 
-  os.system("rm -rf serverless.yaml")
-  os.system("cd ..")
-  os.system("mv serverless.yaml /pythonprem")
-  os.system("git add serverless.yaml")
-  os.system('git commit -m "update stack" ')
-  os.system("git push -u origin main")
+  #os.system("rm -rf serverless.yaml")
+  #os.system("cd ..")
+  #os.system("mv serverless.yaml /pythonprem")
+  #os.system("git add serverless.yaml")
+  #os.system('git commit -m "update stack" ')
+  #os.system("git push -u origin main")
   
 else:
     command = "aws s3api create-bucket --bucket pyprem2022 --region us-east-1"
