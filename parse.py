@@ -44,6 +44,8 @@ if 'pyprem' in content:
   os.system("aws s3 rm "+"s3://pyprem2022/"+"hello.zip")
   os.system("zip "+package+" lambda_function.py hello.py")
   os.system("aws s3 cp "+package+" s3://"+fname+"/")
+  
+  
 #client = boto3.client('cloudformation')
 
 #response = client.describe_stack_resource(
@@ -64,6 +66,11 @@ if 'pyprem' in content:
   with open('serverless.yaml','w') as file1:
     file1.write(filedata1)
   os.system("more serverless.yaml")
+  
+  
+  os.system("git add serverless.yaml")
+  os.system("git commit -m "update stack" ")
+  
 else:
     command = "aws s3api create-bucket --bucket pyprem2022 --region us-east-1"
     os.system(command)
