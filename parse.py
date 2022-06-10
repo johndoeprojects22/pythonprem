@@ -49,7 +49,7 @@ if result == True:
   os.system("aws s3 cp "+package+" s3://"+fname+"/")
   
   
-#client = boto3.client('cloudformation')
+  client = boto3.client('codecommit')
 
 #response = client.describe_stack_resource(
 #    StackName="vpcendpoint",
