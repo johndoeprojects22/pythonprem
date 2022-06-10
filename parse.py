@@ -63,9 +63,9 @@ if result == True:
 # Read in the file
   
 
-  os.system("mkdir tempfolder")
-  os.system("cd tempfolder")
-  os.system("wget https://raw.githubusercontent.com/johndoeprojects22/pythonprem/main/serverless.yaml")
+  #os.system("mkdir tempfolder")
+  #os.system("cd tempfolder")
+  #os.system("wget https://raw.githubusercontent.com/johndoeprojects22/pythonprem/main/serverless.yaml")
   with open('serverless.yaml', 'r') as file1:
     filedata1 = file1.read()
     file1.close()
