@@ -86,22 +86,22 @@ if result == True:
     #file1.write(filedata1)
     file2.close()
     
-  client = boto3.client('codecommit')  
+  #client = boto3.client('codecommit')  
   
-  branchinfo = client.get_branch(
-    repositoryName='pythonpremrepo',
-    branchName='main'
-  )
+ # branchinfo = client.get_branch(
+ #   repositoryName='pythonpremrepo',
+ #   branchName='main'
+ # )
   
-  print(branchinfo['branch']['commitId'])
-  comm_id = branchinfo['branch']['commitId']
-  response = client.put_file(
-    repositoryName='pythonpremrepo',
-    branchName='main',
-    fileContent=filedata2,
-    filePath='serverless.yaml',
-    parentCommitId=comm_id
-  )
+ # print(branchinfo['branch']['commitId'])
+ # comm_id = branchinfo['branch']['commitId']
+ # response = client.put_file(
+ #   repositoryName='pythonpremrepo',
+ #   branchName='main',
+ #   fileContent=filedata2,
+ #   filePath='serverless.yaml',
+ #   parentCommitId=comm_id
+ # )
   
 else:
   command = "aws s3api create-bucket --bucket pyprem2022 --region us-east-1"
