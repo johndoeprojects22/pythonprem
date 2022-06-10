@@ -72,21 +72,29 @@ if result == True:
 
   filedata1 = filedata1.replace("hello.zip",package)
   with open('serverless.yaml','w') as file1:
+    file_content = file1.read()
+
     file1.write(filedata1)
+  response = client.put_file(
+    repositoryName='pythonpremrepo',
+    branchName='main',
+    fileContent=file_content,
+    filePath='serverless.yaml'
+  )
  
-  parent_folder = os.path.join("tempfolder", "pythonpremrepo")
+"""
+ parent_folder = os.path.join("tempfolder", "pythonpremrepo")
   putFilesList = []
   for (root, folders, files) in os.walk(parent_folder):
-    for file in files:
+  for file in files:
       file_path = os.path.join(root, file)
         with open(file_path, mode='r+b') as file_obj:
-            file_content = file_obj.read()
             putFileEntry = {'filePath': str(file_path).replace(parent_folder, ''),
                               'fileContent': file_content}
             putFilesList.append(putFileEntry)
 
   response = client.create_commit(repositoryName="pythonpremrepo", branchName="main", putFiles=putFilesList)
-
+"""
   #os.system("more serverless.yaml")
   #client = boto3.client('codecommit')
   #lst=[]
