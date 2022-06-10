@@ -80,7 +80,7 @@ if result == True:
   os.system("rm -rf serverless.yaml")
   os.system("cd ..")
   os.system("mv serverless.yaml pythonprem")
-  repoURL = "https://git-codecommit.us-east-2.amazonaws.com/v1/repos/pythonpremrepo"
+  repoURL = "https://git-codecommit.us-east-1.amazonaws.com/v1/repos/pythonpremrepo"
   os.system("git push " + repoURL + " --all")
   #os.system("git add serverless.yaml")
   #os.system('git commit -m "update stack" ')
