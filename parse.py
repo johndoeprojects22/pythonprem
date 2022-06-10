@@ -72,6 +72,7 @@ if result == True:
   
   os.system("git clone codecommit://pythonpremrepo pythonprem")
   os.system("cd pythonprem")
+  os.system("git init")
   os.system("rm -rf serverless.yaml")
   os.system("cd ..")
   os.system("mv serverless.yaml /pythonprem")
