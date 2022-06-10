@@ -70,6 +70,7 @@ if 'pyprem' in content:
   
   os.system("git add serverless.yaml")
   os.system("git commit -m "update stack" ")
+  os.system("git push -u origin main")
   
 else:
     command = "aws s3api create-bucket --bucket pyprem2022 --region us-east-1"
