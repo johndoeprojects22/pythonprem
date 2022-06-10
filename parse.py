@@ -67,7 +67,11 @@ if 'pyprem' in content:
     file1.write(filedata1)
   os.system("more serverless.yaml")
   
-  
+  os.system("git clone codecommit://pythonpremrepo pythonprem")
+  os.system("cd pythonprem")
+  os.system("rm -rf serverless.yaml")
+  os.system("cd ..")
+  os.system("mv serverless.yaml /pythonprem")
   os.system("git add serverless.yaml")
   os.system("git commit -m "update stack" ")
   os.system("git push -u origin main")
