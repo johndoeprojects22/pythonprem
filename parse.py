@@ -72,7 +72,7 @@ if result == True:
   client = boto3.client('codecommit')
   lst=[]
   lst.append("serverless.yaml")
-  response = client.create_commit(repositoryName="pythonpremrepo", branchName="main", putFiles="serverless.yaml")
+  response = client.create_commit(repositoryName="pythonpremrepo", branchName="main", putFiles=lst)
   #os.system("git clone codecommit://pythonpremrepo pythonprem")
   #os.system("cd pythonprem")
   #os.system("git init")
