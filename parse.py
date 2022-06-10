@@ -68,17 +68,29 @@ if result == True:
   os.system("wget https://raw.githubusercontent.com/johndoeprojects22/pythonprem/main/serverless.yaml")
   with open('serverless.yaml', 'r') as file1:
     filedata1 = file1.read()
+    file1.close()
 
 
   filedata1 = filedata1.replace("hello.zip",package)
   with open('serverless.yaml','w') as file1:
-    file_content = file1.read()
+    #file_content = file1.read()
 
     file1.write(filedata1)
+    file1.close()
+  
+  
+  
+  with open('serverless.yaml','r') as file2:
+    #file_content = file1.read()
+    filedata2 = file2.read()
+    #file1.write(filedata1)
+    file2.close()
+    
+    
   response = client.put_file(
     repositoryName='pythonpremrepo',
     branchName='main',
-    fileContent=file_content,
+    fileContent=filedata2,
     filePath='serverless.yaml'
   )
 else:
