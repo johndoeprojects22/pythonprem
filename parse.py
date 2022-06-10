@@ -3,6 +3,7 @@ import boto3
 import os
 import time
 import subprocess
+import random
 
 
 stacks = subprocess.check_output('aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE', shell=True) 
@@ -29,6 +30,8 @@ with open('lambda_function.py', 'w') as file:
   file.write(filedata)
 
 stacks = subprocess.check_output('aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE', shell=True) 
+
+
 if 'pyprem' in content:
   print("flag HERE HERE")
   N = 3
