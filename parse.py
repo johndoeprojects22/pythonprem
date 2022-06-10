@@ -87,6 +87,14 @@ if result == True:
     file2.close()
     
   client = boto3.client('codecommit')  
+  
+  branchinfo = client.get_branch(
+    repositoryName='pythonpremrepo',
+    branchName='main'
+  )
+  
+  print(branchinfo)
+  
   response = client.put_file(
     repositoryName='pythonpremrepo',
     branchName='main',
