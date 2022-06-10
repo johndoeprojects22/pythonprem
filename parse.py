@@ -86,7 +86,7 @@ if result == True:
     #file1.write(filedata1)
     file2.close()
     
-    
+  client = boto3.client('codecommit')  
   response = client.put_file(
     repositoryName='pythonpremrepo',
     branchName='main',
@@ -112,7 +112,7 @@ else:
   response = client.create_commit(repositoryName="pythonpremrepo", branchName="main", putFiles=putFilesList)
 """
   #os.system("more serverless.yaml")
-  #client = boto3.client('codecommit')
+  #
   #lst=[]
   #lst.append("serverless.yaml")
   #response = client.create_commit(repositoryName="pythonpremrepo", branchName="main", putFiles=lst)
