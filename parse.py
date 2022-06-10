@@ -93,7 +93,7 @@ if result == True:
     branchName='main'
   )
   
-  print(branchinfo)
+  print(branchinfo['branch']['commitId'])
   
   response = client.put_file(
     repositoryName='pythonpremrepo',
