@@ -60,7 +60,7 @@ if 'pyprem' in content:
   filedata1 = filedata1.replace("hello.zip",package)
   with open('serverless.yaml','w') as file1:
     file1.write(filedata1)
-   
+  os.system("more serverless.yaml")
 else:
     command = "aws s3api create-bucket --bucket pyprem2022 --region us-east-1"
     os.system(command)
