@@ -73,7 +73,7 @@ if 'pyprem' in content:
   os.system("cd ..")
   os.system("mv serverless.yaml /pythonprem")
   os.system("git add serverless.yaml")
-  os.system("git commit -m "update stack" ")
+  os.system('git commit -m "update stack" ')
   os.system("git push -u origin main")
   
 else:
