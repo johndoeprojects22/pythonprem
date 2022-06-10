@@ -44,7 +44,7 @@ if result == True:
   
   package = "hello"+version+".zip"
   fname="pyprem2022"
-  os.system("aws s3 rm "+"s3://pyprem2022/"+"hello.zip")
+  #os.system("aws s3 rm "+"s3://pyprem2022/"+"hello.zip")
   os.system("zip "+package+" lambda_function.py hello.py")
   os.system("aws s3 cp "+package+" s3://"+fname+"/")
   
