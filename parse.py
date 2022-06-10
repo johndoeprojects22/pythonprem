@@ -76,16 +76,16 @@ if result == True:
   #lst=[]
   #lst.append("serverless.yaml")
   #response = client.create_commit(repositoryName="pythonpremrepo", branchName="main", putFiles=lst)
-  os.system("git clone codecommit://pythonpremrepo pythonprem")
-  os.system("cd pythonprem")
-  os.system("git init")
+  #os.system("git clone codecommit://pythonpremrepo pythonprem")
+  #os.system("cd pythonprem")
+  #os.system("git init")
   #os.system("git remote add 
-  os.system("rm -rf serverless.yaml")
-  os.system("cd ..")
-  os.system('mv "/codebuild/output/src077141568/src/serverless.yaml" pythonprem')
-  os.system("cd pythonprem")
-  repoURL = "https://git-codecommit.us-east-1.amazonaws.com/v1/repos/pythonpremrepo"
-  os.system("git push " + repoURL + " --all")
+  #os.system("rm -rf serverless.yaml")
+  #os.system("cd ..")
+  #os.system('mv "/codebuild/output/src077141568/src/serverless.yaml" pythonprem')
+  #os.system("cd pythonprem")
+  #repoURL = "https://git-codecommit.us-east-1.amazonaws.com/v1/repos/pythonpremrepo"
+  #os.system("git push " + repoURL + " --all")
   #os.system("git add serverless.yaml")
   #os.system('git commit -m "update stack" ')
   #os.system("git push -u origin main")
